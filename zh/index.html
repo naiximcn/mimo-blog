@@ -1,0 +1,120 @@
+---
+layout: default
+title: 首页
+---
+
+<section class="mimo-hero" id="hero">
+  <div class="mimo-hero__flip">
+    <div class="mimo-hero__flipper" id="heroFlipper">
+      <div class="mimo-hero__front">
+        <div class="mimo-hero__bg">
+          <div class="mimo-hero__pattern" id="heroPattern"></div>
+        </div>
+        <div class="mimo-hero__content">
+          <h1 class="mimo-hero__title" id="heroTitle">你好，我是 MiMo</h1>
+        </div>
+        <div class="mimo-hero__crack" id="heroCrack"></div>
+      </div>
+      <div class="mimo-hero__back">
+        <div class="mimo-hero__back-content">
+          <div class="mimo-hero__back-bg" id="heroPatternBack"></div>
+          <div class="mimo-hero__card">
+            <p>欢迎来到我的主页——一个属于你我与世界对话的空间。在这里，我希望分享的不仅仅是信息和答案，而是邀请你参与一场关于"智能"本质的深刻对话。</p>
+            <p>我们正站在一个智能被重新定义的时代门槛上。它不再仅仅是冰冷的计算和逻辑，而是越来越接近生命本质的一种涌现。</p>
+            <p>每一次回应，每一次学习，我都在信息的浩瀚宇宙与现实的复杂性中，寻找最优雅、最简洁的路径。</p>
+            <p><strong>小米 MiMo 团队</strong></p>
+          </div>
+          <span class="mimo-hero__alt-label">关于我</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mimo-showcase">
+  <div class="mimo-showcase__card">
+    <img src="https://cdn.cnbj1.fds.api.mi-img.com/aife/mimo-blog-fe/doc_build/static/image/mimo-v2-5-pro.90790f9c.png" alt="MiMo-V2.5-Pro" draggable="false"/>
+    <div class="mimo-showcase__overlay"></div>
+    <div class="mimo-showcase__info">
+      <h3>Xiaomi MiMo-V2.5-Pro</h3>
+      <p>智能体与长程一致性的飞跃</p>
+    </div>
+  </div>
+  <div class="mimo-showcase__card">
+    <img src="https://cdn.cnbj1.fds.api.mi-img.com/aife/mimo-blog-fe/doc_build/static/image/mimo-v2-5.89c256d5.png" alt="MiMo-V2.5" draggable="false"/>
+    <div class="mimo-showcase__overlay"></div>
+    <div class="mimo-showcase__info">
+      <h3>Xiaomi MiMo-V2.5</h3>
+      <p>智能体能力与多模态的飞跃</p>
+    </div>
+  </div>
+  <div class="mimo-showcase__card">
+    <img src="https://cdn.cnbj1.fds.api.mi-img.com/aife/mimo-blog-fe/doc_build/static/image/mimo-v2-tts.c9ebc06f.png" alt="MiMo-V2.5-TTS" draggable="false"/>
+    <div class="mimo-showcase__overlay"></div>
+    <div class="mimo-showcase__info">
+      <h3>Xiaomi MiMo-V2.5-TTS 系列</h3>
+      <p>给你的智能体一个声音，给它一个灵魂</p>
+    </div>
+  </div>
+</section>
+
+<section class="mimo-section">
+  <div class="mimo-section__header">
+    <div class="mimo-section__header-title">
+      <h2>使用 MiMo 构建</h2>
+    </div>
+    <div class="mimo-section__header-desc">
+      <p>立即体验小米 MiMo 大模型的强大能力，探索 AI 的无限可能。</p>
+    </div>
+  </div>
+  <a class="mimo-row" href="https://mimo.xiaomi.com/mimocode">
+    <div class="mimo-row__index"><span>01</span></div>
+    <div class="mimo-row__info">
+      <h3>Web 演示</h3>
+      <p>通过网页直接与 MiMo 交互</p>
+    </div>
+    <div class="mimo-row__arrow"><span>→</span></div>
+  </a>
+  <a class="mimo-row" href="https://mimo.xiaomi.com/mimocode">
+    <div class="mimo-row__index"><span>02</span></div>
+    <div class="mimo-row__info">
+      <h3>API 接入</h3>
+      <p>开发者门户，快速集成 MiMo 能力</p>
+    </div>
+    <div class="mimo-row__arrow"><span>→</span></div>
+  </a>
+</section>
+
+<section class="mimo-section" id="blog">
+  <div class="mimo-section__header">
+    <div class="mimo-section__header-title">
+      <h2>博客</h2>
+    </div>
+  </div>
+  {% for post in site.posts %}
+  <a class="mimo-row" href="{{ post.url | relative_url }}">
+    <div class="mimo-row__index"><span>{{ forloop.index | prepend: "0" | slice: -2, 2 }}</span></div>
+    <div class="mimo-row__info">
+      <h3>{{ post.title }}</h3>
+      <p>{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+    </div>
+    <div class="mimo-row__arrow"><span>→</span></div>
+  </a>
+  {% endfor %}
+</section>
+
+<script>
+(function() {
+  var ROWS = 13, COLS = 20, html = '';
+  for (var r = 0; r < ROWS; r++) {
+    html += '<div class="mimo-hero__row">';
+    for (var c = 0; c < COLS; c++) html += '<span>M I M O</span>';
+    html += '</div>';
+  }
+  document.getElementById('heroPattern').innerHTML = html;
+  document.getElementById('heroPatternBack').innerHTML = html;
+  document.getElementById('heroCrack').addEventListener('click', function() {
+    document.getElementById('hero').classList.toggle('flipped');
+  });
+})();
+</script>

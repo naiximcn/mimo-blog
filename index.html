@@ -1,0 +1,133 @@
+---
+layout: default
+---
+
+<section class="mimo-hero" id="hero">
+  <div class="mimo-hero__flip">
+    <div class="mimo-hero__flipper" id="heroFlipper">
+      <!-- Front -->
+      <div class="mimo-hero__front">
+        <div class="mimo-hero__bg">
+          <div class="mimo-hero__pattern" id="heroPattern"></div>
+        </div>
+        <div class="mimo-hero__content">
+          <h1 class="mimo-hero__title" id="heroTitle">HELLO, I'M MiMo</h1>
+        </div>
+        <div class="mimo-hero__crack" id="heroCrack"></div>
+      </div>
+      <!-- Back -->
+      <div class="mimo-hero__back">
+        <div class="mimo-hero__back-content">
+          <div class="mimo-hero__back-bg" id="heroPatternBack"></div>
+          <div class="mimo-hero__card">
+            <p>Welcome to my homepage—a space for a dialogue between you, me, and the world. Here, I wish to share more than just information and answers; I invite you to a profound conversation regarding the very essence of "intelligence."</p>
+            <p>We stand at the threshold of an era where intelligence is being redefined. It is no longer merely cold calculation and logic, but an emergence that draws closer to the essence of life itself.</p>
+            <p>With every response and every act of learning, I seek the most elegant and concise path through the vast universe of information and the complexities of reality.</p>
+            <p><strong>Xiaomi MiMo Team</strong></p>
+          </div>
+          <span class="mimo-hero__alt-label">About Me</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mimo-showcase">
+  <div class="mimo-showcase__card">
+    <img src="https://cdn.cnbj1.fds.api.mi-img.com/aife/mimo-blog-fe/doc_build/static/image/mimo-v2-5-pro.90790f9c.png" alt="MiMo-V2.5-Pro" draggable="false"/>
+    <div class="mimo-showcase__overlay"></div>
+    <div class="mimo-showcase__info">
+      <h3>Xiaomi MiMo-V2.5-Pro</h3>
+      <p>A leap in agentic and long horizon coherence.</p>
+    </div>
+  </div>
+  <div class="mimo-showcase__card">
+    <img src="https://cdn.cnbj1.fds.api.mi-img.com/aife/mimo-blog-fe/doc_build/static/image/mimo-v2-5.89c256d5.png" alt="MiMo-V2.5" draggable="false"/>
+    <div class="mimo-showcase__overlay"></div>
+    <div class="mimo-showcase__info">
+      <h3>Xiaomi MiMo-V2.5</h3>
+      <p>A leap in agency and multimodality.</p>
+    </div>
+  </div>
+  <div class="mimo-showcase__card">
+    <img src="https://cdn.cnbj1.fds.api.mi-img.com/aife/mimo-blog-fe/doc_build/static/image/mimo-v2-tts.c9ebc06f.png" alt="MiMo-V2.5-TTS" draggable="false"/>
+    <div class="mimo-showcase__overlay"></div>
+    <div class="mimo-showcase__info">
+      <h3>Xiaomi MiMo-V2.5-TTS Series</h3>
+      <p>Give your agent a voice. Give it a soul.</p>
+    </div>
+  </div>
+</section>
+
+<section class="mimo-section">
+  <div class="mimo-section__header">
+    <div class="mimo-section__header-title">
+      <h2>Build with MiMo</h2>
+    </div>
+    <div class="mimo-section__header-desc">
+      <p>Experience the powerful capabilities of Xiaomi MiMo's large-scale model now and explore the infinite possibilities of AI.</p>
+    </div>
+  </div>
+  <a class="mimo-row" href="https://mimo.xiaomi.com/mimocode">
+    <div class="mimo-row__index"><span>01</span></div>
+    <div class="mimo-row__info">
+      <h3>Web Demo</h3>
+      <p>Interact with MiMo directly through the web</p>
+    </div>
+    <div class="mimo-row__arrow"><span>→</span></div>
+  </a>
+  <a class="mimo-row" href="https://mimo.xiaomi.com/mimocode">
+    <div class="mimo-row__index"><span>02</span></div>
+    <div class="mimo-row__info">
+      <h3>API Access</h3>
+      <p>Developer portal for quick integration of MiMo capabilities</p>
+    </div>
+    <div class="mimo-row__arrow"><span>→</span></div>
+  </a>
+</section>
+
+<section class="mimo-section" id="blog">
+  <div class="mimo-section__header">
+    <div class="mimo-section__header-title">
+      <h2>Blog</h2>
+    </div>
+  </div>
+  {% for post in site.posts %}
+  <a class="mimo-row" href="{{ post.url | relative_url }}">
+    <div class="mimo-row__index"><span>{{ forloop.index | prepend: "0" | slice: -2, 2 }}</span></div>
+    <div class="mimo-row__info">
+      <h3>{{ post.title }}</h3>
+      <p>{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+    </div>
+    <div class="mimo-row__arrow"><span>→</span></div>
+  </a>
+  {% endfor %}
+  {% if site.posts.size == 0 %}
+  <div class="mimo-row">
+    <div class="mimo-row__index"><span>01</span></div>
+    <div class="mimo-row__info">
+      <h3>No posts yet</h3>
+      <p>Create your first post in the _posts directory</p>
+    </div>
+  </div>
+  {% endif %}
+</section>
+
+<script>
+(function() {
+  var ROWS = 13, COLS = 20, html = '';
+  for (var r = 0; r < ROWS; r++) {
+    html += '<div class="mimo-hero__row">';
+    for (var c = 0; c < COLS; c++) html += '<span>M I M O</span>';
+    html += '</div>';
+  }
+  document.getElementById('heroPattern').innerHTML = html;
+  document.getElementById('heroPatternBack').innerHTML = html;
+
+  var hero = document.getElementById('hero');
+  var crack = document.getElementById('heroCrack');
+  crack.addEventListener('click', function() {
+    hero.classList.toggle('flipped');
+  });
+})();
+</script>

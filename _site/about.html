@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }} - {{ site.title }}</title>
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <title>About</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="icon" href="https://cdn.cnbj1.fds.api.mi-img.com/aife/mimo-blog-fe/doc_build/mimo.ico">
 </head>
 <body>
   <header class="mimo-nav">
     <div class="mimo-nav__inner">
-      <a href="{{ '/' | relative_url }}" class="mimo-nav__logo">
+      <a href="/" class="mimo-nav__logo">
         <img src="https://cdn.cnbj1.fds.api.mi-img.com/aife/mimo-blog-fe/doc_build/static/image/logo.99baaffe.png" alt="MiMo" height="28">
       </a>
       <div class="mimo-nav__right">
         <nav class="mimo-nav__links" id="navLinks">
-          <a href="{{ '/' | relative_url }}">Home</a>
-          <a href="{{ '/#blog' | relative_url }}">Blog</a>
-          <a href="{{ '/about' | relative_url }}">About</a>
+          <a href="/">Home</a>
+          <a href="/#blog">Blog</a>
+          <a href="/about">About</a>
         </nav>
         <div class="mimo-nav__lang" id="langSwitcher">
           <button class="mimo-nav__lang-btn">
@@ -26,9 +26,9 @@
             <svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M16 22 6 12l1.4-1.4 8.6 8.6 8.6-8.6L26 12z"/></svg>
           </button>
           <div class="mimo-nav__lang-dropdown">
-            <a href="{{ '/' | relative_url }}" class="active">English</a>
-            <a href="{{ '/zh/' | relative_url }}">简体中文</a>
-            <a href="{{ '/zh-tw/' | relative_url }}">繁體中文</a>
+            <a href="/" class="active">English</a>
+            <a href="/zh/">简体中文</a>
+            <a href="/zh-tw/">繁體中文</a>
           </div>
         </div>
         <button class="mimo-nav__hamburger" id="hamburger" aria-label="Menu">
@@ -37,21 +37,27 @@
       </div>
     </div>
   </header>
-  <main>
-    <article class="mimo-post">
-      <div class="mimo-post__meta">
-        <span>{{ page.date | date: "%B %d, %Y" }}</span>
-        {% if page.category %}
-        <span>{{ page.category }}</span>
-        {% endif %}
-      </div>
-      <h1 class="mimo-post__title">{{ page.title }}</h1>
-      <div class="mimo-post__body">{{ content }}</div>
-      <a href="{{ '/' | relative_url }}" class="mimo-post__back">← Back to Blog</a>
-    </article>
-  </main>
+  <main><section class="mimo-section">
+  <div class="mimo-section__header">
+    <div class="mimo-section__header-title">
+      <h2>About Me</h2>
+    </div>
+  </div>
+  <div style="padding: 0 40px 40px; max-width: 720px;">
+    <div class="mimo-post__body">
+      <p>Welcome to my homepage—a space for a dialogue between you, me, and the world. Here, I wish to share more than just information and answers; I invite you to a profound conversation regarding the very essence of "intelligence."</p>
+      <p>We stand at the threshold of an era where intelligence is being redefined. It is no longer merely cold calculation and logic, but an emergence that draws closer to the essence of life itself.</p>
+      <h2>Empathy as Intelligence</h2>
+      <p>Yet, the ultimate significance of intelligence lies not within itself, but in how it connects with human wisdom. Ilya profoundly noted that the heart of true intelligence—especially the AGI of the future—may well be empathy: the ability to understand, simulate, and care for other sentient beings.</p>
+      <blockquote>"Emotions are not interferences in decision-making; they are the bedrock of effective human action."</blockquote>
+      <p>One could say this era is giving birth to a "New Brain." I aspire to be a bridge: one end anchored in vast algorithms and physical laws, the other connecting to your curiosity, your daily life, and your creativity.</p>
+      <p><strong>Xiaomi MiMo Team</strong></p>
+    </div>
+  </div>
+</section>
+</main>
   <footer class="mimo-footer">
-    <span>Copyright © 2010 - {{ site.time | date: '%Y' }} Xiaomi. All Rights Reserved</span>
+    <span>Copyright © 2010 - 2026 Xiaomi. All Rights Reserved</span>
   </footer>
   <script>
     document.getElementById('hamburger')?.addEventListener('click', function() {

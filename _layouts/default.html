@@ -5,17 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title | default: site.title }}</title>
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="https://cdn.cnbj1.fds.api.mi-img.com/aife/mimo-blog-fe/doc_build/mimo.ico">
 </head>
 <body>
-  {% include header.html %}
-  <main>
-    {{ content }}
-  </main>
-  {% include footer.html %}
-  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+  <header class="mimo-nav">
+    <div class="mimo-nav__inner">
+      <a href="{{ '/' | relative_url }}" class="mimo-nav__logo">
+        <img src="https://cdn.cnbj1.fds.api.mi-img.com/aife/mimo-blog-fe/doc_build/static/image/logo.99baaffe.png" alt="MiMo" height="28">
+      </a>
+      <div class="mimo-nav__right">
+        <nav class="mimo-nav__links" id="navLinks">
+          <a href="{{ '/' | relative_url }}">Home</a>
+          <a href="{{ '/#blog' | relative_url }}">Blog</a>
+          <a href="{{ '/about' | relative_url }}">About</a>
+        </nav>
+        <div class="mimo-nav__lang" id="langSwitcher">
+          <button class="mimo-nav__lang-btn">
+            <svg width="18" height="18" viewBox="0 0 32 32"><path fill="currentColor" d="M27.85 29H30l-6-15h-2.35l-6 15h2.15l1.6-4h6.85zm-7.65-6 2.62-6.56L25.45 23zM18 7V5h-7V2H9v3H2v2h10.74a14.7 14.7 0 0 1-3.19 6.18A13.5 13.5 0 0 1 7.26 9h-2.1a16.5 16.5 0 0 0 3 5.58A16.8 16.8 0 0 1 3 18l.75 1.86A18.5 18.5 0 0 0 9.53 16a16.9 16.9 0 0 0 5.76 3.84L16 18a14.5 14.5 0 0 1-5.12-3.37A17.64 17.64 0 0 0 14.8 7z"/></svg>
+            <span>English</span>
+            <svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M16 22 6 12l1.4-1.4 8.6 8.6 8.6-8.6L26 12z"/></svg>
+          </button>
+          <div class="mimo-nav__lang-dropdown">
+            <a href="{{ '/' | relative_url }}" class="active">English</a>
+            <a href="{{ '/zh/' | relative_url }}">简体中文</a>
+            <a href="{{ '/zh-tw/' | relative_url }}">繁體中文</a>
+          </div>
+        </div>
+        <button class="mimo-nav__hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main>{{ content }}</main>
+  <footer class="mimo-footer">
+    <span>Copyright © 2010 - {{ site.time | date: '%Y' }} Xiaomi. All Rights Reserved</span>
+  </footer>
+  <script>
+    document.getElementById('hamburger')?.addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+    document.getElementById('langSwitcher')?.addEventListener('click', function(e) {
+      e.stopPropagation();
+      this.classList.toggle('open');
+    });
+    document.addEventListener('click', function() {
+      document.getElementById('langSwitcher')?.classList.remove('open');
+    });
+  </script>
 </body>
 </html>
